@@ -33,11 +33,13 @@ print(theta)
 #Peso del usuario que no sabemos segun prediccion
 
 weight = theta[0] + (theta[1] * X_test) # 176 era la altura a predecir
-print(weight) 
 
 mse = np.mean((y_test - weight)**2)
+r2 = 1 - (np.sum((y_test - weight)**2) / np.sum((y_test - y_test.mean())**2))
 
-print(f'El MSE: {mse}')
+print(f'El MSE: {mse:.2f}, el RMSE {np.sqrt(mse):.2f}')
+print(f'Calificación r2 {r2:.3f}')
+
 # Parte visual de matplot, generado por inteligencia artificial:
 plt.scatter(X_train, y_train, color='blue', label='Train')
 plt.scatter(X_test, y_test, color='orange', label='Test (real)')
